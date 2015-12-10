@@ -25,7 +25,7 @@ Basic Front-end validation using React's PropTypes. As you can see in files are 
 ###File structure
 Files are structured like parent children components for better orientation.
 
-Example - in /src/components are four main components (Navigation, Content, Chat, Footer). If some of these components has children components then we create a folder with the same name as component. For example **Content** component has children component **Mines**. Now you can probably image the structure. Just in case there is a "schema"
+Example - in /src/components are four main components (Navigation, Content, Chat, Footer). If some of these components has children components then we create a folder with the same name as component. For example **Content** component has children component **Mines**. Now you can probably imagine the structure. Just in case there is a "schema"
 
 /Content.js
 /Content/Mines.js *"Mines.js have children so let's add new folder with same name"*
