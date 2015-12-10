@@ -23,7 +23,7 @@ I decided to have as much logic as possible, but also considering readability, i
 ###File structure
 Files are structure like parent child components for better orientation.
 
-**Example** in /src/components there are four main components (Navigation, Content, Chat, Footer). If some of these components has child(s) components then we create a folder with the same name as component. For example **Content** component has child component **Mines**. Now you can probably image the structure. Just in case there is a "schema"
+Example - in /src/components are four main components (Navigation, Content, Chat, Footer). If some of these components has child(s) components then we create a folder with the same name as component. For example **Content** component has child component **Mines**. Now you can probably image the structure. Just in case there is a "schema"
 
 /Content.js
 /Content/Mines.js *"Mines has childs so let's add new folder with same name"*
@@ -31,16 +31,15 @@ Files are structure like parent child components for better orientation.
 
 If some component is reused in more components then the component is located in the closest directory possible to be accessable. An example is Notification.js
 
-Current Tree
+Directory tree to get to Notification.js
 
 /Content/Mines/Notification.js
 
-If you enter the file you can see that there is comment in the top of the file. 
+If you enter the file you can see that there is comment at the top of the file. 
 *// used in Game/Tile.js*
 *// used in Sidebar/Deposit.js*
 
-As we can see the component is two times reused and in the closest accessable directory.
-
+As we can see the component is two times reused and in is the closest accessable directory for both reusabilities.
 
 This approach makes sense, is easy to follow and from first sight you can recognize if component has childs or not. It's also easy to scale appliction with following steps mentioned above.
 
