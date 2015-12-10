@@ -4,7 +4,7 @@ Install all dependencies - **npm install**
 
 Run webpack - **npm start**, open browser of your choice on *http://localhost:3000/*
 
-More tasks in - **package.json** {'scripts': ...}
+More tasks described in - **package.json** {'scripts': ...}
 
 ###Used technologies
 
@@ -18,15 +18,17 @@ Axios (Ajax requests)
 
 ###Architectural decisions
 
-I decided to have as much logic as possible, but also considering readability, in parent (**Mines**) component. That means that props are passed to child components (data-flow parent > children), so the Redux **dispatch** is in only in parent (in Minesweeper Game). Which makes easier to trace actions and the whole application has higher performance. But in some cases it's better to have more Redux **connects** for readability and maintainability.
+I decided to have as much logic as possible, but also considering readability, in parent (**Mines**) component. That means that props are passed to children components (data-flow parent > children), so the Redux **dispatch** is in only in parent (in Minesweeper Game). Which makes easier to trace actions and the whole application has higher performance. But in some cases it's better to have more Redux **connects** for readability and maintainability.
+
+Basic Front-end validation using React's PropTypes. As you can see in files are included basic validations of components. If validation fails then, you can see warning in console.
 
 ###File structure
-Files are structure like parent child components for better orientation.
+Files are structured like parent children components for better orientation.
 
-Example - in /src/components are four main components (Navigation, Content, Chat, Footer). If some of these components has child(s) components then we create a folder with the same name as component. For example **Content** component has child component **Mines**. Now you can probably image the structure. Just in case there is a "schema"
+Example - in /src/components are four main components (Navigation, Content, Chat, Footer). If some of these components has children components then we create a folder with the same name as component. For example **Content** component has children component **Mines**. Now you can probably image the structure. Just in case there is a "schema"
 
 /Content.js
-/Content/Mines.js *"Mines has childs so let's add new folder with same name"*
+/Content/Mines.js *"Mines.js have children so let's add new folder with same name"*
 /Content/Mines/...
 
 If some component is reused in more components then the component is located in the closest directory possible to be accessable. An example is Notification.js
@@ -36,10 +38,11 @@ Directory tree to get to Notification.js
 /Content/Mines/Notification.js
 
 If you enter the file you can see that there is comment at the top of the file. 
-*// used in Game/Tile.js*
-*// used in Sidebar/Deposit.js*
+
+>// used in Game/Tile.js
+
+>// used in Sidebar/Deposit.js
 
 As we can see the component is two times reused and in is the closest accessable directory for both reusabilities.
 
-This approach makes sense, is easy to follow and from first sight you can recognize if component has childs or not. It's also easy to scale appliction with following steps mentioned above.
-
+This approach makes sense, is easy to follow and from first sight you can recognize if component has children or not. It's also easy to scale appliction with following steps mentioned above.
