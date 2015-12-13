@@ -1,8 +1,8 @@
 # The Rise
 
-Install all dependencies - **npm install**
+To install all dependencies - **npm install**
 
-Run webpack - **npm start**, open browser of your choice on *http://localhost:3000/*
+Run webpack - **npm start**, then open the browser of your choice and point it to *http://localhost:3000/*
 
 More tasks described in - **package.json** {'scripts': ...}
 
@@ -10,7 +10,7 @@ More tasks described in - **package.json** {'scripts': ...}
 
 Webpack, Babel 5, React, Redux + devtools, SASS
 
->devtools are possible to enable in (**Root** component by changing debug prop from 'debug={false}' to 'debug={true}' and then reload browser tab. Every triggered action that is connected to Redux will be shown in the sidebar.
+>It is possible to enable devtools in the **Root** component by changing the debug prop from 'debug={false}' to 'debug={true}' and then reloading the browser tab. Every triggered action that is connected to Redux will be shown in the sidebar.
 
 ###Technologies to add
 
@@ -18,31 +18,33 @@ Axios (Ajax requests)
 
 ###Architectural decisions
 
-I decided to have as much logic as possible, but also considering readability, in parent (**Mines**) component. That means that props are passed to children components (data-flow parent > children), so the Redux **dispatch** is in only in parent (in Minesweeper Game). Which makes easier to trace actions and the whole application has higher performance. But in some cases it's better to have more Redux **connects** for readability and maintainability.
+I decided to have as much logic as possible - also taking into account readability - in the parent (**Mines**) component. That means that props are passed to children components (data-flow parent > children), so that the Redux **dispatch** is only in the parent (in Minesweeper Game). This makes it easier to trace actions and the whole application has higher performance in general. Note that in some cases it is better to have more Redux **connects** for readability and maintainability.
 
-Basic Front-end validation using React's PropTypes. As you can see in files are included basic validations of components. If validation fails then, you can see warning in console.
+Basic Front-end validation is handled using React's PropTypes. As you can see, included in the files are basic validations of components. If validation fails then you can see warnings in the console.
 
 ###File structure
-Files are structured like parent children components for better orientation.
+Files are structured in the following manner: parent > children components for better orientation.
 
-Example - in /src/components are four main components (Navigation, Content, Chat, Footer). If some of these components has children components then we create a folder with the same name as component. For example **Content** component has children component **Mines**. Now you can probably imagine the structure. Just in case there is a "schema"
+Example - in /src/components are four main components (Navigation, Content, Chat, Footer). If any of these components have child components then we create a folder with the same name as the component. 
+
+For example **Content** component has the child component **Mines**. Here is a "schema":
 
 /Content.js
-/Content/Mines.js *"Mines.js have children so let's add new folder with same name"*
+/Content/Mines.js *"Mines.js has so let's add a new folder with the same name"*
 /Content/Mines/...
 
-If some component is reused in more components then the component is located in the closest directory possible to be accessable. An example is Notification.js
+If a component is reused in multiple places then the component is located in the closest logical directory. An example is Notification.js.
 
-Directory tree to get to Notification.js
+Directory tree to get to Notification.js:
 
 /Content/Mines/Notification.js
 
-If you enter the file you can see that there is comment at the top of the file. 
+If you open the file you can see that there is a comment at the top of the file: 
 
 >// used in Game/Tile.js
 
 >// used in Sidebar/Deposit.js
 
-As we can see the component is two times reused and in is the closest accessable directory for both reusabilities.
+As we can see, the component is reused twice and is in the closest accessible directory for both reuse locations.
 
-This approach makes sense, is easy to follow and from first sight you can recognize if component has children or not. It's also easy to scale appliction with following steps mentioned above.
+This approach makes sense, is easy to follow and in one glance it is possible to see whether or not a component has children. It's also easy to scale the application by following the steps mentioned above.
